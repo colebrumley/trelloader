@@ -20,7 +20,7 @@ var RootCmd = &cobra.Command{
 		client := new(client.TrelloClient)
 		client.Initialize(cmd)
 		for _, cfgFile := range args {
-			template, err := tpl.LoadTemplateFromFile(cfgFile)
+			template, err := tpl.LoadBoardTemplateFromFile(cfgFile)
 			if err != nil {
 				panic(err)
 			}

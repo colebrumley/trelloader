@@ -11,19 +11,20 @@ type Card struct {
 	Labels            []string
 }
 
+// Label represents a Trello label
 type Label struct {
 	Name, Color, ID string
 }
 
 // Board represents a board
 type Board struct {
-	Name, Description string
-	Labels            []Label
-	Lists             map[string][]Card
+	Name, Description, Background string
+	Labels                        []Label
+	Lists                         map[string][]Card
 }
 
-// LoadTemplateFromFile loads a JSON board
-func LoadTemplateFromFile(path string) (t *Board, err error) {
+// LoadBoardTemplateFromFile loads a JSON board
+func LoadBoardTemplateFromFile(path string) (t *Board, err error) {
 	var contentBytes []byte
 	t = new(Board)
 	contentBytes, err = ioutil.ReadFile(path)
