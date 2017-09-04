@@ -1,0 +1,255 @@
+{
+    "Name": "AWS Assessment",
+    "Description": "Tracking AWS Well-Architected Framework compliance",
+    "Labels": [{
+        "Name": "Cost Optimization",
+        "Color": "green"
+    }, {
+        "Name": "Operational Excellence",
+        "Color": "orange"
+    }, {
+        "Name": "Performance Efficiency",
+        "Color": "purple"
+    }, {
+        "Name": "Reliability",
+        "Color": "blue"
+    }, {
+        "Name": "Security",
+        "Color": "red"
+    }, {
+        "Name": "IAM",
+        "Color": "sky"
+    }, {
+        "Name": "Detective Controls",
+        "Color": "black"
+    }, {
+        "Name": "Infrastructure Protection",
+        "Color": "pink"
+    }, {
+        "Name": "Data Protection",
+        "Color": "lime"
+    }, {
+        "Name": "Incident Response",
+        "Color": "yellow"
+    }, {
+        "Name": "Cost-Effective Resources",
+        "Color": "sky"
+    }, {
+        "Name": "Matching Supply and Demand",
+        "Color": "black"
+    }, {
+        "Name": "Expenditure Awareness",
+        "Color": "lime"
+    }, {
+        "Name": "Optimizing Over Time",
+        "Color": "pink"
+    }, {
+        "Name": "Preparation",
+        "Color": "sky"
+    }, {
+        "Name": "Operations",
+        "Color": "black"
+    }, {
+        "Name": "Responses",
+        "Color": "pink"
+    }, {
+        "Name": "Selection",
+        "Color": "lime"
+    }, {
+        "Name": "Review",
+        "Color": "yellow"
+    }, {
+        "Name": "Monitoring",
+        "Color": "sky"
+    }, {
+        "Name": "Foundations",
+        "Color": "sky"
+    }, {
+        "Name": "Change Management",
+        "Color": "pink"
+    }, {
+        "Name": "Failure Management",
+        "Color": "black"
+    }],
+    "Lists": {
+        "ToDo": [{
+            "Name": "Root Account Access",
+            "Labels": ["Security", "IAM"],
+            "Description": "# SEC 1: How are you protecting access to and use of the AWS root account credentials?\n## Best practices:\n  - **MFA and Minimal Use of Root** The AWS root account credentials are only used for only minimal required activities.\n  - **No use of Root**\n"
+        }, {
+            "Name": "Console Access",
+            "Labels": ["Security", "IAM"],
+            "Description": "# SEC 2: How are you defining roles and responsibilities of system users to control human access to the AWS Management Console and API?\n## Best practices:\n  - **Employee Life-Cycle Managed** Employee life-cycle policies are defined and enforced.\n  - **Least Privilege** Users, groups, and roles are clearly defined and granted only the minimum privileges needed to accomplish business requirements.\n"
+        }, {
+            "Name": "Access Controls",
+            "Labels": ["Security", "IAM"],
+            "Description": "# SEC 3: How are you limiting automated access to AWS resources?\n## Best practices:\n  - **Static Credentials used for Automated Access** Stored these securely.\n  - **Dynamic Authentication for Automated Access** Manage using instance profiles or Amazon STS.\n"
+        }, {
+            "Name": "Log Detection",
+            "Labels": ["Security", "Detective Controls"],
+            "Description": "# SEC 4: How are you capturing and analyzing logs?\n## Best practices:\n  - **Activity Monitored Appropriately Amazon CloudWatch logs, events, VPC flow logs, ELB logs, S3 bucket logs, etc.**\n  - **AWS Cloud Trail Enabled**\n  - **Monitored Operating System or Application Logs**\n"
+        }, {
+            "Name": "Boundary Protections",
+            "Labels": ["Security", "Infrastructure Protection"],
+            "Description": "# SEC 5: How are you enforcing network and host-level boundary protection?\n## Best practices:\n  - **Controlled Network Traffic in VPC** For example, use firewalls, security groups, NACLS, a bastion host, etc.\n  - **Controlled Network Traffic at the Boundary** For example use AWS WAF, host based firewalls, security groups, NACLS, etc.\n"
+        }, {
+            "Name": "Service-level Security",
+            "Labels": ["Security", "Infrastructure Protection"],
+            "Description": "# SEC 6. How are you leveraging AWS service level security features?\n## Best practices:\n  - **Using Additional Features Where Appropriate**\n"
+        }, {
+            "Name": "OS-level Security",
+            "Labels": ["Security", "Infrastructure Protection"],
+            "Description": "# SEC 7. How are you protecting the integrity of the operating systems on your Amazon EC2 instances?\n## Best practices:\n  - **File Integrity** File integrity controls are used for EC2 instances.\n  - **EC2 Intrusion Detection** Host-based intrusion detection controls are used for EC2 instances.\n  - **AWS Marketplace or Partner Solution** A solution from the AWS Marketplace or from an APN Partner.\n  - **Configuration Management Tool** Use of a custom Amazon Machine Image (AMI) or configuration management tools (such as Puppet or Chef) that are secured by default.\n"
+        }, {
+            "Name": "Data Classification",
+            "Labels": ["Security", "Data Protection"],
+            "Description": "# SEC 8. How are you classifying your data?\n## Best Practices:\n  - **Using Data Classification Schema**\n  - **All data is Treated as Sensitive**\n"
+        }, {
+            "Name": "Data Encryption",
+            "Labels": ["Security", "Data Protection"],
+            "Description": "# SEC 9. How are you encrypting and protecting your data at rest?\n## Best Practices\n  - **Not Required** Data at rest encryption is not required\n  - **Encrypting at Rest**\n"
+        }, {
+            "Name": "Encryption Key Management",
+            "Labels": ["Security", "Data Protection"],
+            "Description": "# SEC 10. How are you managing keys?\n## Best Practices:\n  - **AWS CloudHSM** Use AWS CloudHSM\n  - **Using AWS Service Controls** data at rest can be encrypted using AWS service-specific controls (e.g., Amazon S3 SSE, Amazon EBS encrypted volumes, Amazon Relational Database Service (RDS) Transparent Data Encryption (TDE), etc.).\n  - **Using Client Side** Data at rest is encrypted using client side techniques.\n  - **AWS Marketplace or Partner Solution** A solution from the AWS Marketplace or from an APN Partner. (e.g., SafeNet, TrendMicro, etc.).\n"
+        }, {
+            "Name": "In-transit Data Protection",
+            "Labels": ["Security", "Data Protection"],
+            "Description": "# SEC 11. How are you encrypting and protecting your data in transit?\n## Best Practices:\n  - **Not Required** Encryption not required on data in transit.\n  - **Encrypted Communications** TLS or equivalent is used for communication as appropriate.\n"
+        }, {
+            "Name": "Incident Response Procedures",
+            "Labels": ["Security", "Incident Response"],
+            "Description": "# SEC 12. How do you ensure you have the appropriate incident response?\n## Best practices:\n  - **Pre-Provisioned Access** Infosec has the right access, or means to gain access quickly. This should be pre-provisioned so that an appropriate response can be made to an incident.\n  - **Pre-Deployed Tools** Infosec has the right tools pre-deployed into AWS so that an appropriate response can be made to an incident\n  - **Non-Production Game Days** Incident response simulations are conducted regularly in the non-production environment, and lessons learned are incorporated into the architecture and operations.\n  - **Production Game Days** Incident response simulations are conducted regularly in the production environment, and lessons learned are incorporated into the architecture and operations.\n"
+        }, {
+            "Name": "Cost Consideration",
+            "Labels": ["Cost Optimization", "Cost-Effective Resources"],
+            "Description": "# COST 1. Are you considering cost when you select AWS services for your solution?\n## Best practices:\n  - **Select Services for Cost Reduction** Analyze services to see which ones you can use to reduce cost.\n  - **Optimize for License Costs**\n  - **Optimize Using Serverless and Container-Based Approach** Use of AWS Lambda, Amazon S3 websites, Amazon DynamoDB, and Amazon ECS to reduce cost.\n  - **Optimize Using Appropriate Storage Solutions** Use the most costeffective storage solution based on usage patterns (e.g., Amazon EBS cold storage, Amazon S3 Standard-Infrequent Access, Amazon Glacier, etc.).\n  - **Optimize Using Appropriate Databases** Use Amazon Relational Database Service (RDS) (Postgres, MySQL, SQL Server, Oracle Server) or Amazon DynamoDB (or other key-value stores, NoSQL alternatives) where it\u2019s appropriate.\n  - **Optimize Using Other Application-Level Services** Use Amazon Simple Queue Service (SQS), Amazon Simple Notification Service (SNS), and Amazon Simple Email Service (SES) where appropriate.\n"
+        }, {
+            "Name": "Resource Sizing",
+            "Labels": ["Cost Optimization", "Cost-Effective Resources"],
+            "Description": "# COST 2. Have you sized your resources to meet your cost targets?\n## Best practices:\n  - **Metrics Driven Resource Sizing** Leverage performance metrics to select the right size/type to optimize for cost. Appropriately provision throughput, sizing, and storage for services such as Amazon EC2, Amazon DynamoDB, Amazon EBS (provisioned IOPS), Amazon RDS, Amazon EMR, networking, etc.\n"
+        }, {
+            "Name": "Effective Pricing Model",
+            "Labels": ["Cost Optimization", "Cost-Effective Resources"],
+            "Description": "# COST 3. Have you selected the appropriate pricing model to meet your cost targets?\n## Best practices:\n  - **Reserved Capacity and Commit Deals** Regularly analyze usage and purchase Reserved Instances accordingly (e.g. Amazon EC2, Amazon DynamoDB, Amazon S3, Amazon CloudFront, etc.).\n  - **Spot** Use Spot Instances (e.g. Spot block, fleet) for select workloads (e.g., batch, EMR, etc.).\n  - **Consider Region Cost** Factor costs into region selection.\n"
+        }, {
+            "Name": "Capacity/Demand Matching",
+            "Labels": ["Cost Optimization", "Matching Supply and Demand"],
+            "Description": "# COST 4. How do you make sure your capacity matches but does not substantially exceed what you need?\n## Best practices:\n  - **Demand-Based Approach** Use Auto Scaling to respond to variable demand.\n  - **Buffer-Based Approach** Buffer work (e.g. using Amazon Kinesis or Amazon Simple Queue Service (SQS)) to defer work until you have sufficient capacity to process it.\n  - **Time-based approach** Examples of a time-based approach include following the sun, turning off Development and Test instances over the weekend, following quarterly or annual schedules (e.g., Black Friday).\n"
+        }, {
+            "Name": "Data Transfer Awareness",
+            "Labels": ["Cost Optimization", "Expenditure Awareness"],
+            "Description": "# COST 5. Did you consider data-transfer charges when designing your architecture?\n## Best practices:\n  - **Optimize** Architect to optimize data transfer (application design, WAN acceleration, Multi-AZ, region selection, etc.).\n  - **CDN** Use a CDN where applicable.\n  - **AWS Direct Connect** Analyze the situation and use AWS Direct Connect where applicable.\n"
+        }, {
+            "Name": "Expenditure Monitoring",
+            "Labels": ["Cost Optimization", "Expenditure Awareness"],
+            "Description": "# COST 6. How are you monitoring usage and spending?\n## Best practices:\n  - **Tag all resources** Tag all taggable resources to be able to correlate changes in your bill to changes in our infrastructure and usage.\n  - **Leverage Billing and Cost Management Tools** Have a standard process to load and interpret the Detailed Billing Reports or Cost Explorer. Monitor usage and spend regularly using Amazon CloudWatch or a third-party provider where applicable (examples: Cloudability, CloudCheckr, CloudHealth).\n  - **Notifications** Let key members of your team know if your spend moves outside of well-defined limits.\n  - **Finance Driven Charge Back/Show Back Method** Use this to allocate instances and resources to cost centers (e.g., using tagging).\n"
+        }, {
+            "Name": "Decommissioning Unneeded Resources",
+            "Labels": ["Cost Optimization", "Expenditure Awareness"],
+            "Description": "# COST 7. Do you decommission resources that you no longer need or stop resources that are temporarily not needed?\n## Best Practices:\n  - **Automated** Design your system to gracefully handle resource termination as you identify and decommission non-critical or unrequired resources with low utilization.\n  - **Defined Process** Have a process in place to identify and decommission orphaned resources.\n"
+        }, {
+            "Name": "Expenditure Controls",
+            "Labels": ["Cost Optimization", "Expenditure Awareness"],
+            "Description": "# COST 8. What access controls and procedures do you have in place to govern AWS usage?\n## Best practices:\n  - **Establish Groups and Roles (Example: Dev/Test/Prod)** Use governance mechanisms to control who can spin up instances and resources in each group. (This applies to AWS services or third-party solutions.)\n  - **Track Project Lifecycle** Track, measure, and audit the lifecycle of projects, teams, and environments to avoid using and paying for unnecessary resources.\n"
+        }, {
+            "Name": "Evaluating New Services",
+            "Labels": ["Cost Optimization", "Optimizing Over Time"],
+            "Description": "# COST 9. How do you manage and/or consider the adoption of new services?\n## Best practices:\n  - **Establish a Cost Optimization Function**\n  - **Review** Have a process for reviewing new services, resource types, and sizes. Re-run performance tests to evaluate any reduction in cost. \n"
+        }, {
+            "Name": "Best Practices",
+            "Labels": ["Operational Excellence", "Preparation"],
+            "Description": "# OPS 1. What best practices for cloud operations are you using?\n## Best practices:\n  - **Operational Checklist** Create an operational checklist that you use to evaluate if you are ready to operate the workload.\n  - **Proactive Plan** Have a proactive plan for events (e.g., marketing campaigns, flash sales) that prepares you for both opportunities and risks that could have a material impact on your business (e.g., reputation, finances).\n  - **Security Checklist** Create a security checklist that you can use to evaluate if you are ready to securely operate the workload (e.g., zero day, DDoS, compromised keys).\n"
+        }, {
+            "Name": "Configuration Management",
+            "Labels": ["Operational Excellence", "Preparation"],
+            "Description": "# OPS 2. How are you doing configuration management for your workload?\n## Best practices:\n  - **Resource Tracking** Plan for ways to identify your resources and their function within the workload (e.g., use metadata, tagging).\n  - **Documentation** Document your architecture (e.g., infrastructure ascode, CMDB, diagrams, release notes).\n  - **Capture Operational Learnings** Captured operational learnings overtime (e.g., wiki, knowledge base, tickets).\n  - **Immutable Infrastructure** Establish an immutable infrastructure sothat you redeploy, you don\u2019t patch.\n  - **Automated Change Procedures** Automate your change procedures.\n  - **Configuration Management Database (CMDB)** Track all changesin a CMDB.\n"
+        }, {
+            "Name": "Change Impact",
+            "Labels": ["Operational Excellence", "Operations"],
+            "Description": "# OPS 3. How are you evolving your workload while minimizing the impact of change?\n## Best practices:\n  - **Deployment Pipeline** Put a CI/CD pipeline in place (e.g., source code repository, build systems, deployment and testing automation).\n  - **Release Management Process** Establish a release management process (e.g., manual or automated).\n  - **Small Incremental Changes** Ensure that you can release small incremental versions of system components.\n  - **Revertible Changes** Be prepared to revert changes that introduce operational issues (e.g., roll back, feature toggles).\n  - **Risk Mitigation Strategies** Use risk mitigation strategies such as Blue/Green, Canary, and A/B testing.\n"
+        }, {
+            "Name": "Operational Monitoring",
+            "Labels": ["Operational Excellence", "Operations"],
+            "Description": "# OPS 4. How do you monitor your workload to ensure it is operating as expected?\n## Best practices:\n  - **Monitoring** Use Amazon CloudWatch, third-party, or custom monitoring tools to monitor performance.\n  - **Aggregate Logs** Aggregate logs from multiple sources (e.g., application logs, AWS service-specific logs, VPC flow logs, CloudTrail).\n  - **Alarm-Based Notifications** Receive an automatic alert from your monitoring systems if metrics are out of safe bounds.\n  - **Trigger-Based Actions** Alarms cause automated actions to remediate or escalate issues.\n"
+        }, {
+            "Name": "Unplanned Event Response",
+            "Labels": ["Operational Excellence", "Responses"],
+            "Description": "# OPS 5. How do you respond to unplanned operational events?\n# Best practices:\n  - **Playbook** Have a playbook that you follow (e.g., on call process, workflow chain, escalation process) and update regularly.\n  - **RCA Process** Have an RCA process to ensure that you can resolve, document, and fix issues so they do not happen in the future.\n  - **Automated Response** Handle unplanned operational events gracefully through automated responses (e.g., Auto Scaling, Support API).\n"
+        }, {
+            "Name": "Response Escalation",
+            "Labels": ["Operational Excellence", "Responses"],
+            "Description": "# OPS 6. How is escalation managed when responding to unplanned operational events?\n## Best practices:\n  - **Appropriately Document and Provision** Put necessary stakeholders and systems in place for receiving alerts when escalations occur.\n  - **Functional Escalation with Queue-based Approach** Escalate between appropriate functional team queues based on priority, impact, and intake mechanisms.\n  - **Hierarchical Escalation** Use a demand- or time-based approach. As impact, scale, or time to resolution/recovery of incident increases, priority is escalated.\n  - **External Escalation Path** Include external support, AWS support, AWS Partners, and third-party support engagement in escalation paths.\n  - **Hierarchical Priority Escalation is Automated** When demand or time thresholds are passed, priority automatically escalates.\n"
+        }, {
+            "Name": "Procedures",
+            "Labels": ["Performance Efficiency", "Selection"],
+            "Description": "# PERF 1. How do you select the best performing architecture?\n## Best practices:\n  - **Benchmarking** Load test a known workload on AWS and use that to estimate the best selection.\n  - **Load Test** Deploy the latest version of your system on AWS using different resource types and sizes, use monitoring to capture performance metrics, and then make a selection based on a calculation of performance/cost.\n"
+        }, {
+            "Name": "Compute Selection",
+            "Labels": ["Performance Efficiency", "Selection"],
+            "Description": "# PERF 2. How do you select your compute solution?\n## Best practices:\n  - **Consider Options** Consider the different options of using instances, containers, and functions to get the best performance.\n  - **Instance Configuration Options** If you use instances, consider configuration options such as family, instance sizes, and features (GPU, I/O, burstable).\n  - **Container Configuration Options** If you use containers, consider configuration options such as memory, CPU, and tenancy configuration of the container.\n  - **Function Configuration Options** If you use functions, consider configuration options such as memory, runtime, and state.\n  - **Elasticity** Use elasticity (e.g., Auto Scaling, Amazon EC2 Container Service (ECS), AWS Lambda) to meet changes in demand.\n"
+        }, {
+            "Name": "Storage Selection",
+            "Labels": ["Performance Efficiency", "Selection"],
+            "Description": "# PERF 3. How do you select your storage solution?\n## Best practices:\n  - **Consider Characteristics** Consider the different characteristics (e.g., shareable, file size, cache size, access patterns, latency, throughput, persistence of data) you require to select the services you need to use (Amazon S3, Amazon EBS, Amazon Elastic File System (EFS), EC2 instance store)\n  - **Consider Configuration Options** Considered configuration options such as PIOPS, SSD, magnetic, and Amazon S3 Transfer Acceleration.\n  - **Consider Access Patterns** Optimize for how you use storage systems based on access pattern (e.g., striping, key distribution, partitioning). \n"
+        }, {
+            "Name": "Database Selection",
+            "Labels": ["Performance Efficiency", "Selection"],
+            "Description": "# PERF 4. How do you select your database solution?\n## Best practices:\n  - **Consider Characteristics** Consider the different characteristics (e.g., availability, consistency, partition tolerance, latency, durability, scalability, query capability) so that you can select the most performant database approach to use (relational, No-SQL, warehouse, in-memory).\n  - **Consider Configuration Options** Consider configuration options such as storage optimization, database level settings, memory, and cache.\n  - **Consider Access Patterns** Optimize how you use database systems based on your access pattern (e.g., indexes, key distribution, partition, horizontal scaling).\n  - **Consider Other Approaches** Considered other approaches to providing queryable data such as search indexes, data warehouses, and big data.\n"
+        }, {
+            "Name": "Network Selection",
+            "Labels": ["Performance Efficiency", "Selection"],
+            "Description": "# PERF 5. How do you select your network solution?\n## Best practices:\n  - **Consider Location** Considered your location options (e.g., region, Availability Zone, placement groups, edge) to reduce network latency.\n  - **Consider Product Features** Consider product features (e.g., EC2 instance network capability, very high network instance types, Amazon EBS optimized instances, Amazon S3 Transfer Acceleration, Dynamic Amazon CloudFront) to optimize network traffic.\n  - **Consider Networking Features** Consider networking features (e.g., Amazon Route 53 latency routing, Amazon VPC endpoints, AWS Direct Connect) to reduce network distance or jitter.\n  - **Appropriate NACLS** Use the minimal set of NACLS to maintain network throughput.\n  - **Consider Encryption Offload** Consider using load balancing to offload encryption termination (TLS).\n  - **Consider protocols** Consider which protocols you need to optimize network performance.\n"
+        }, {
+            "Name": "Ongoing Selection",
+            "Labels": ["Performance Efficiency", "Review"],
+            "Description": "# PERF 6. How do you ensure that you continue to have the most appropriate resource type as new resource types and features are introduced?\n## Best practices:\n  - **Review** Have a process for reviewing new resource types and sizes. Rerun performance tests to evaluate any improvements in performance efficiency.\n"
+        }, {
+            "Name": "Metrics",
+            "Labels": ["Performance Efficiency", "Monitoring"],
+            "Description": "# PERF 7. How do you monitor your resources post-launch to ensure they are performing as expected?\n## Best practices:\n  - **Monitoring** Use Amazon CloudWatch, third-party, or custom monitoring tools to monitor performance.\n  - **Alarm-Based Notifications** Receive an automatic alert from your monitoring systems if metrics are out of safe bounds. \n  - **Trigger-Based Actions** Set alarms that cause automated actions to remediate or escalate issues. \n"
+        }, {
+            "Name": "Tradeoffs",
+            "Labels": ["Performance Efficiency", "Monitoring"],
+            "Description": "# PERF 8. How do you use tradeoffs to improve performance?\n## Best practices:\n  - **Consider Services** Use services that improve performance, such as Amazon ElastiCache, Amazon CloudFront, and AWS Snowball.\n  - **Consider Patterns** Use patterns to improve performance, such as caching, read replicas, sharding, compression, and buffering.\n"
+        }, {
+            "Name": "Service Limits",
+            "Labels": ["Reliability", "Foundations"],
+            "Description": "# REL 1. How do you manage AWS service limits for your accounts?\n## Best practices:\n  - **Monitor and Manage Limits** Evaluate your potential usage on AWS, increase your regional limits appropriately, and allow planned growth in usage.\n  - **Set Up Automated Monitoring** Implement tools, e.g., SDKs, to alert you when thresholds are being approached.\n  - **Be Aware of Fixed Service Limits** Be aware of unchangeable service limits and architect around these.\n  - **Ensure There Is a Sufficient Gap Between Your Service Limit and Your Max Usage to Accommodate for Failover**\n  - **Service Limits are Considered Across All Relevant Accounts and Regions**\n"
+        }, {
+            "Name": "Network Topology",
+            "Labels": ["Reliability", "Foundations"],
+            "Description": "# REL 2. How are you planning your network topology on AWS?\n## Best Practices:\n  - **Connectivity Back to Data Center not Needed**\n  - **Highly Available Connectivity Between AWS and On-Premises Environment (as Applicable)** Multiple DX circuits, multiple VPN tunnels, AWS Marketplace appliances as applicable.\n  - **Highly Available Network Connectivity for the Users of the Workload** Highly available load balancing and/or proxy, DNS-based solution, AWS Marketplace appliances, etc.\n  - **Non-Overlapping Private IP Address Ranges** The use of IP address ranges and subnets in your virtual private cloud should not overlap each other, other cloud environments, or your on-premises environments.\n  - **IP Subnet Allocation** Individual Amazon VPC IP address ranges should be large enough to accommodate an application\u2019s requirements, including factoring in future expansion and allocation of IP addresses to subnets across Availability Zones.\n"
+        }, {
+            "Name": "Change Management for Demand",
+            "Labels": ["Reliability", "Change Management"],
+            "Description": "# REL 3. How does your system adapt to changes in demand?\n## Best practices:\n  - **Automated Scaling** Use automatically scalable services, e.g., Amazon S3, Amazon CloudFront, Auto Scaling, Amazon DynamoDB, AWS Elastic Beanstalk, etc.\n  - **Load Tested** Adopt a load testing methodology to measure if scaling activity will meet application requirements.\n"
+        }, {
+            "Name": "Monitoring",
+            "Labels": ["Reliability", "Change Management"],
+            "Description": "# REL 4. How are you monitoring AWS resources?\n## Best practices:\n  - **Monitoring** Monitor your applications with Amazon CloudWatch or third-party tools.\n  - **Notification** Plan to receive notifications when significant events occur.\n  - **Automated Response** Use automation to take action when failure is detected, e.g., to replace failed components.\n"
+        }, {
+            "Name": "Change Execution",
+            "Labels": ["Reliability", "Change Management"],
+            "Description": "# REL 5. How are you executing change?\n## Best practices:\n  - **Automated** Automate deployments and patching\n"
+        }, {
+            "Name": "Backups",
+            "Labels": ["Reliability", "Failure Management"],
+            "Description": "# REL 6. How are you backing up your data?\n## Best practices:\n  - **Automated Backups** Use AWS features, AWS Marketplace solutions, or third-party software to automate backups.\n  - **Periodic Recovery Testing** Validate that the backup process implementation meets RTO and RPO through a recovery test.\n"
+        }, {
+            "Name": "Withstanding Component Failures",
+            "Labels": ["Reliability", "Failure Management"],
+            "Description": "# REL 7. How does your system withstand component failures?\n## Best practices:\n  - **Multi-AZ/Region** Distribute application load across multiple Availability Zones /Regions (e.g., DNS, ELB, Application Load Balancer, API Gateway)\n  - **Loosely Coupled Dependencies** For example use queuing systems, streaming systems, workflows, load balancers, etc.\n  - **Graceful Degradation** When a component\u2019s dependencies are unhealthy, the component itself does not report as unhealthy. It is capable of continuing to serve requests in a degraded manner.\n  - **Auto Healing** Use automated capabilities to detect failures and perform an action to remediate. Continuously monitor the health of your system and plan to receive notifications of any significant events.\n"
+        }, {
+            "Name": "Resiliency",
+            "Labels": ["Reliability", "Failure Management"],
+            "Description": "# REL 8. How are you testing for resiliency?\n## Best Practices:\n  - **Playbook** Have a playbook for failure scenarios.\n  - **Failure Injection** Regularly test failures (e.g., using Chaos Monkey), ensuring coverage of failure pathways.\n  - **Schedule Game Days**\n  - **Root Cause Analysis (RCA)** Perform reviews of system failures based on significant events to evaluate the architecture.\n"
+        }, {
+            "Name": "Disaster Recovery",
+            "Labels": ["Reliability", "Failure Management"],
+            "Description": "# REL 9. How are you planning for disaster recovery?\n## Best practices:\n  - **Objectives Defined** Define RTO and RPO.\n  - **Disaster Recovery** Establish a DR strategy.\n  - **Configuration Drift** Ensure that Amazon Machine Images (AMIs) and the system configuration state are up-to-date at the DR site/region.\n  - **DR Tested and Validated** Regularly test failover to DR to ensure RTO and RPO are met.\n  - **Automated Recovery Implemented** Use AWS and/or third-party tools to automate system recovery.\n"
+        }],
+        "In Progress": null,
+        "Completed": null
+    }
+}

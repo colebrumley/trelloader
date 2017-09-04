@@ -1,0 +1,14 @@
+hash: a19fbe7989a5adafa49e4621db2f3727e48c9bdaaa3502b3528dcc78cb9de93c
+updated: 2017-09-03T21:59:00.394238161-05:00
+imports:
+- name: github.com/adlio/trello
+  version: 9b16227a39ccebfd1a3665f779136338e0dca61d
+- name: github.com/inconshreveable/mousetrap
+  version: 76626ae9c91c4f2a10f34cad8ce83ea42c93bb75
+- name: github.com/pkg/errors
+  version: c605e284fe17294bda444b34710735b29d1a9d90
+- name: github.com/spf13/cobra
+  version: 3c0b56b677e04926dfa835a1b3f11cd4f62f076e
+- name: github.com/spf13/pflag
+  version: 7aff26db30c1be810f9de5038ec5ef96ac41fd7c
+testImports: []
