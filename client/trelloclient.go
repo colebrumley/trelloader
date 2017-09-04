@@ -1,6 +1,7 @@
 package client
 
 import (
+	"fmt"
 	"log"
 	"strings"
 
@@ -17,8 +18,13 @@ type TrelloClient struct {
 
 // Initialize loads the flag values
 func (c *TrelloClient) Initialize(cmd *cobra.Command) error {
-	c.AppKey, _ = cmd.Flags().GetString("appkey")
-	c.Token, _ = cmd.Flags().GetString("token")
+	var err error
+	if c.AppKey, err = cmd.Flags().GetString("appkey"); err != nil {
+		return fmt.Errorf("must supply a valid appkey")
+	}
+	if c.Token, err = cmd.Flags().GetString("token"); err != nil {
+		return fmt.Errorf("must supply a valid token")
+	}
 	return nil
 }
 
