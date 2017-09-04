@@ -1,6 +1,7 @@
 {
     "Name": "AWS Assessment",
     "Description": "Tracking AWS Well-Architected Framework compliance",
+    "Background": "58e09e5905c611a8575de14c",
     "Labels": [{
         "Name": "Cost Optimization",
         "Color": "green"
