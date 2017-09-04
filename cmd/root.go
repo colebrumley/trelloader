@@ -12,21 +12,28 @@ import (
 
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
-	Use:   "trelloader",
-	Short: "Create a Trello board from JSON",
-	Long:  "This utility creates a Trello board pre-populated with lists, cards, and labels from a JSON template.",
-	Args:  cobra.MinimumNArgs(1),
+	Use:     "trelloader",
+	Short:   "Create a Trello board from JSON",
+	Example: "trelloader -k YOUR_KEY -t YOUR_TOKEN examples/waf.json",
+	Long: `This utility creates a Trello board pre-populated with a background,
+lists, cards, and labels from a JSON template.
+	
+A Trello API AppKey and token are required, to generate new ones see
+https://trello.com/app-key`,
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		client := new(client.TrelloClient)
-		client.Initialize(cmd)
+		if err := client.Initialize(cmd); err != nil {
+			log.Fatal(err)
+		}
 		for _, cfgFile := range args {
 			template, err := tpl.LoadBoardTemplateFromFile(cfgFile)
 			if err != nil {
-				panic(err)
+				log.Fatalf("failed to load board template %s: %s", cfgFile, err.Error())
 			}
 			log.Println("Loaded file", cfgFile)
 			if err = client.Apply(template); err != nil {
-				panic(err)
+				log.Fatalf("failed to create board %s: %s", template.Name, err.Error())
 			}
 			log.Printf("Built board %s", template.Name)
 		}
