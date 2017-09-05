@@ -12,11 +12,8 @@ To install via go (make sure `$GOPATH/bin` is in your `PATH`), run
 go get github.com/colebrumley/trelloader
 ```
 
-To install via this repo, run
+To install via [Homebrew](https://brew.sh) run the following, which will tap my `homebrew-formulas` repo and install trelloader in one step.
 
 ```
-git clone https://github.com/colebrumley/trelloader.git
-cd trelloader/
-go build
-mv trelloader /usr/local/bin/
+brew install colebrumley/formulas/trelloader
 ```
