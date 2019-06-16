@@ -1,6 +1,6 @@
 # `trelloader`: A quick and dirty utility to create a Trello board
 
-This utility creates a Trello board pre-populated with lists, cards, and labels from a JSON template.
+This utility creates a Trello board pre-populated with lists, cards, and labels from a JSON or YAML template.
 
 To get an AppKey and token, go [here](https://trello.com/app-key).
 
