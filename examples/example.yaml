@@ -1,0 +1,31 @@
+---
+Name: A Board
+Description: An example board to show how to use `trelloader`
+Background: green
+Labels:
+- Name: Example Label
+  Color: pink
+- Name: Sample Label
+  Color: red
+Lists:
+  Todo:
+  - Name: Things
+    Labels:
+    - Sample Label
+    - Example Label
+  In Progress:
+  - Name: Stuff
+    Labels:
+    - Sample Label
+  Completed:
+  - Name: Move a Card to the Completed List
+    Labels:
+    - Example Label
+    Description: |-
+      # I
+      ## can
+      ### use
+      #### markdown
+      - in
+      - the
+      - description

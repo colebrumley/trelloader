@@ -7,7 +7,7 @@ Go Trello API
 [![Build Status](https://travis-ci.org/adlio/trello.svg)](https://travis-ci.org/adlio/trello)
 [![Coverage Status](https://coveralls.io/repos/github/adlio/trello/badge.svg?branch=master)](https://coveralls.io/github/adlio/trello?branch=master)
 
-A #golang package to access the [Trello API](https://www.trello.com/api). Nearly 100% of the
+A #golang package to access the [Trello API](https://developers.trello.com/v1.0/reference). Nearly 100% of the
 read-only surface area of the API is covered, as is creation and modification of Cards.
 Low-level infrastructure for features to modify Lists and Boards are easy to add... just not
 done yet.
@@ -19,7 +19,7 @@ example use cases.
 
 ## Installation
 
-The Go Trello API has been Tested compatible with Go 1.1 on up. Its only dependency is
+The Go Trello API has been Tested compatible with Go 1.7 on up. Its only dependency is
 the `github.com/pkg/errors` package. It otherwise relies only on the Go standard library.
 
 ```
@@ -125,6 +125,24 @@ if err != nil {
 }
 ```
 
+## Creating and deleting a Board
+
+A board can be created or deleted on the `Board` struct for the user whose credentials are being used.
+
+```Go
+  board := trello.NewBoard("My bucket list")
+
+  // POST
+  err := client.CreateBoard(&board, trello.Defaults())
+
+  // DELETE
+  err := board.Delete(trello.Defaults())
+  if err != nil {
+    fmt.Println(err)
+  }
+}
+```
+
 ## Creating a Card
 
 The API provides several mechanisms for creating new cards.
@@ -139,6 +157,7 @@ card := trello.Card{
   Desc: "Card description",
   Pos: 12345.678,
   IDList: "iDOfaLiSt",
+  IDLabels: []string{"labelID1", "labelID2"},
 }
 err := client.CreateCard(card, trello.Defaults())
 ```
@@ -148,13 +167,13 @@ err := client.CreateCard(card, trello.Defaults())
 
 ```Go
 list, err := client.GetList("lIsTID", trello.Defaults())
-list.AddCard(trello.Card{ Name: "Card Name", Description: "Card description" }, trello.Defaults())
+list.AddCard(&trello.Card{ Name: "Card Name", Desc: "Card description" }, trello.Defaults())
 ```
 
 ### Creating a Card by Copying Another Card
 
 ```Go
-err := card.CopyToList("listIdNUmber", trello.Defaults()
+err := card.CopyToList("listIdNUmber", trello.Defaults())
 ```
 
 ## Get Actions on a Board

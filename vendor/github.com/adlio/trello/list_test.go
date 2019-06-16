@@ -28,6 +28,21 @@ func TestGetList(t *testing.T) {
 	}
 }
 
+func TestGetListWithCards(t *testing.T) {
+	c := testClient()
+	c.BaseURL = mockResponse("lists", "list-api-example.json").URL
+	list, err := c.GetList("4eea4ff", Defaults())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(list.Cards) == 0 {
+		t.Fatal("cannot test cards as non was available in lists mock response")
+	}
+	if list.Cards[0].client == nil {
+		t.Fatal("client not set on cards")
+	}
+}
+
 func TestGetListsOnBoard(t *testing.T) {
 	board := testBoard(t)
 	board.client.BaseURL = mockResponse("lists", "board-lists-api-example.json").URL
@@ -41,6 +56,23 @@ func TestGetListsOnBoard(t *testing.T) {
 	}
 }
 
+func TestGetListsOnBoardWithCards(t *testing.T) {
+	board := testBoard(t)
+	board.client.BaseURL = mockResponse("lists", "board-lists-api-example.json").URL
+	lists, err := board.GetLists(Defaults())
+	if err != nil {
+		t.Fatal(err)
+	}
+	for i := range lists {
+		if len(lists[i].Cards) == 0 {
+			t.Fatal("cannot test cards as non was available in lists mock response")
+		}
+		if lists[i].Cards[0].client == nil {
+			t.Fatal("client not set on cards")
+		}
+	}
+}
+
 // Utility function to get the standard case Client.GetList() response
 //
 func testList(t *testing.T) *List {
@@ -51,4 +83,41 @@ func testList(t *testing.T) *List {
 		t.Fatal(err)
 	}
 	return list
+}
+
+func TestCreateList(t *testing.T) {
+	c := testClient()
+	c.BaseURL = mockResponse("lists", "create-list-example.json").URL
+
+	board := Board{
+		client:         c,
+		ID:             "5c41027ca9c378795b5a5036",
+	}
+
+	listName := "hello"
+
+	list, err := board.CreateList(listName, Arguments{"pos": "35"})
+	if err != nil {
+		t.Error(err)
+	}
+	if list.ID != "5ccd793e91682684235c0b13" {
+		t.Errorf("Expected list to pick up an ID. Instead got '%s'.", list.ID)
+	}
+	if list.IDBoard != "5c41027ca9c378795b5a5036" {
+		t.Errorf("Expected list to pick up board ID. Instead got '%s'.", list.IDBoard)
+	}
+	if list.Name != listName {
+		t.Errorf("Expected list to pick up name. Instead got '%s'", list.Name)
+	}
+	if list.Pos != 35 {
+		t.Errorf("Expected the returned list to pick up a position. Instead got '%v'.", list.Pos)
+	}
+	if list.Closed != false {
+		t.Errorf("Expected list to pick up Closed. Instead got '%v'", list.Closed)
+	}
+	if list.client == nil {
+		t.Errorf("Expected list to pick up client. Instead got nil")
+	}
+
+
 }

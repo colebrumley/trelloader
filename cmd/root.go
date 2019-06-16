@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/colebrumley/trelloader/client"
 	"github.com/colebrumley/trelloader/tpl"
@@ -13,10 +14,10 @@ import (
 // RootCmd represents the base command when called without any subcommands
 var RootCmd = &cobra.Command{
 	Use:     "trelloader",
-	Short:   "Create a Trello board from JSON",
-	Example: "trelloader -k YOUR_KEY -t YOUR_TOKEN examples/waf.json",
+	Short:   "Create a Trello board from JSON or YAML",
+	Example: "trelloader -k YOUR_KEY -t YOUR_TOKEN examples/example.json examples/example.yaml",
 	Long: `This utility creates a Trello board pre-populated with a background,
-lists, cards, and labels from a JSON template.
+lists, cards, and labels from a JSON or YAML template.
 	
 A Trello API AppKey and token are required, to generate new ones see
 https://trello.com/app-key`,
@@ -27,7 +28,14 @@ https://trello.com/app-key`,
 			log.Fatal(err)
 		}
 		for _, cfgFile := range args {
-			template, err := tpl.LoadBoardTemplateFromFile(cfgFile)
+			var template *tpl.Board
+			var err error
+			if strings.HasSuffix(cfgFile, ".yml") || strings.HasSuffix(cfgFile, ".yaml") {
+				template, err = tpl.LoadBoardTemplateFromYAMLFile(cfgFile)
+			}
+			if strings.HasSuffix(cfgFile, ".json") {
+				template, err = tpl.LoadBoardTemplateFromJSONFile(cfgFile)
+			}
 			if err != nil {
 				log.Fatalf("failed to load board template %s: %s", cfgFile, err.Error())
 			}
